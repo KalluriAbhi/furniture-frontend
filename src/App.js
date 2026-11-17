@@ -10,6 +10,9 @@ import ProductDetail from './pages/ProductDetail';
 import CartPage from './pages/CartPage';
 import Footer from './components/Footer';
 
+// Production API Base URL (accessible globally in this file)
+export const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://furniture-backend.onrender.com';
+
 // Inner Header & Navigation Component
 function Header({ cartCount, currentUser, handleLogout, setIsAuthOpen }) {
   return (
@@ -51,7 +54,6 @@ function Header({ cartCount, currentUser, handleLogout, setIsAuthOpen }) {
           Studio Store
         </Link>
 
-        {/* Render Admin Link ONLY when an admin user is logged in */}
         {currentUser && currentUser.role === 'admin' && (
           <Link
             to="/admin"
@@ -151,7 +153,6 @@ function StorefrontShell({
 }) {
   return (
     <div style={{ backgroundColor: '#FAF9F6', minHeight: '100vh', color: '#2C2A29', fontFamily: "'Georgia', serif" }}>
-      {/* Announcement Bar */}
       <div style={{ backgroundColor: '#4A3B32', color: '#F5EFE6', textAlign: 'center', padding: '8px', fontSize: '12px', letterSpacing: '1px', textTransform: 'uppercase' }}>
         Artisanal Handloom & Handcrafted Creations • Ethically Sourced & Made to Order
       </div>
@@ -171,7 +172,6 @@ function StorefrontShell({
 
       {children}
       <Footer />
-
     </div>
   );
 }
@@ -266,7 +266,6 @@ function MainApp() {
 
   return (
     <Routes>
-      {/* Customer Storefront Homepage */}
       <Route
         path="/"
         element={
@@ -316,7 +315,6 @@ function MainApp() {
         }
       />
 
-      {/* Dedicated Product Detail Page */}
       <Route
         path="/products/:id"
         element={
@@ -326,7 +324,6 @@ function MainApp() {
         }
       />
 
-      {/* Dedicated Shopping Bag / Cart Page */}
       <Route
         path="/cart"
         element={
@@ -340,7 +337,6 @@ function MainApp() {
         }
       />
 
-      {/* Checkout Route */}
       <Route
         path="/checkout"
         element={
@@ -352,7 +348,6 @@ function MainApp() {
         }
       />
 
-      {/* Explicit /admin Route wrapped in AdminLayout */}
       <Route
         path="/admin"
         element={

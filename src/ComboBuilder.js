@@ -10,7 +10,7 @@ const ComboBuilder = ({ comboId, onAddToCart}) => {
 
   useEffect(() => {
     // Fetch Combo & Items from Backend API
-    axios.get(`http://localhost:5000/api/combos/${comboId}`)
+    axios.get(`http://process.env.REACT_APP_API_URL/api/combos/${comboId}`)
       .then((res) => {
         const { combo, items } = res.data;
         setCombo(combo);

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = 'http://process.env.REACT_APP_API_URL/api';
 
 function AuthModal({ isOpen, onClose, onLoginSuccess }) {
   const [isSignUp, setIsSignUp] = useState(false);

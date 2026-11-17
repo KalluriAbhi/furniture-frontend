@@ -19,7 +19,7 @@ const ProductDetail = ({ onAddToCart }) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    axios.get(`http://localhost:5000/api/products`)
+    axios.get(`http://process.env.REACT_APP_API_URL/api/products`)
       .then((res) => {
         const found = res.data.find((p) => p.product_id.toString() === id);
         setProduct(found);

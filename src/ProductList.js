@@ -18,7 +18,7 @@ export default function ProductList({ onAddToCart }) {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/products');
+        const res = await axios.get('http://process.env.REACT_APP_API_URL/api/products');
         const data = Array.isArray(res.data) ? res.data : (res.data.products || []);
         setProducts(data);
       } catch (err) {
