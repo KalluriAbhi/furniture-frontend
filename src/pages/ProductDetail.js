@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './ProductDetail.css';
 import axios from 'axios'; 
-
+import { API_BASE_URL } from '../config';
+ 
 const ProductDetail = ({ onAddToCart }) => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ const ProductDetail = ({ onAddToCart }) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    axios.get(`http://process.env.REACT_APP_API_URL/api/products`)
+    axios.get(`${API_BASE_URL}/api/products`)
       .then((res) => {
         const found = res.data.find((p) => p.product_id.toString() === id);
         setProduct(found);

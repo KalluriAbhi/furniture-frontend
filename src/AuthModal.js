@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
-const API_BASE = 'http://process.env.REACT_APP_API_URL/api';
+import { API_BASE_URL } from './config'; // Make sure the path matches your folder structure
+
+const API_BASE = `${API_BASE_URL}/api`;
 
 function AuthModal({ isOpen, onClose, onLoginSuccess }) {
   const [isSignUp, setIsSignUp] = useState(false);

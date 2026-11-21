@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://furniture-backend.onrender.com';
 const ComboBuilder = ({ comboId, onAddToCart}) => {
   const [combo, setCombo] = useState(null);
   const [slots, setSlots] = useState([]);
@@ -10,7 +10,7 @@ const ComboBuilder = ({ comboId, onAddToCart}) => {
 
   useEffect(() => {
     // Fetch Combo & Items from Backend API
-    axios.get(`http://process.env.REACT_APP_API_URL/api/combos/${comboId}`)
+    axios.get(`${API_BASE_URL}/api/combos/${comboId}`)
       .then((res) => {
         const { combo, items } = res.data;
         setCombo(combo);

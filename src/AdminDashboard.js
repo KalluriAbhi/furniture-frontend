@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://furniture-backend.onrender.com';
 export default function AdminDashboard({ activeTab = 'products', setActiveTab }) {
   const [products, setProducts] = useState([]);
   const [orders, setOrders] = useState([]);
@@ -23,12 +23,12 @@ export default function AdminDashboard({ activeTab = 'products', setActiveTab })
  const fetchData = async () => {
     setLoading(true);
     try {
-      const prodRes = await axios.get('process.env.REACT_APP_API_URL/api/products');
+      const prodRes = await axios.get(`${API_BASE_URL}/api/products`);
       const prodData = Array.isArray(prodRes.data) ? prodRes.data : (prodRes.data.products || []);
       setProducts(prodData);
 
       // Make sure this points to /api/admin/orders
-      const orderRes = await axios.get('process.env.REACT_APP_API_URL/api/admin/orders');
+      const orderRes = await axios.get(`${API_BASE_URL}/api/admin/orders`);
       const orderData = Array.isArray(orderRes.data) ? orderRes.data : (orderRes.data.orders || []);
       setOrders(orderData);
     } catch (err) {
@@ -48,7 +48,7 @@ export default function AdminDashboard({ activeTab = 'products', setActiveTab })
     try {
       const token = localStorage.getItem('studio_token');
       await axios.post(
-        'http://process.env.REACT_APP_API_URL/api/admin/products',
+        `${API_BASE_URL}/api/admin/products`,
         {
           ...newProduct,
           sku: newProduct.sku || `SKU-${Date.now()}`,
@@ -84,7 +84,7 @@ export default function AdminDashboard({ activeTab = 'products', setActiveTab })
     try {
       const token = localStorage.getItem('studio_token');
       // Pass productId directly (e.g., 102 instead of #102)
-      await axios.delete(`http://process.env.REACT_APP_API_URL/api/products/${productId}`, {
+      await axios.delete(`${API_BASE_URL}/api/products/${productId}`, {
         headers: token ? { Authorization: `Bearer ${token}` } : {}
       });
 

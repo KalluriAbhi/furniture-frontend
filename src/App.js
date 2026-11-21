@@ -11,7 +11,7 @@ import CartPage from './pages/CartPage';
 import Footer from './components/Footer';
 
 // Production API Base URL (accessible globally in this file)
-export const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://furniture-backend.onrender.com';
+export const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://furniture-backend-production-45e28013.up.railway.app';
 
 // Inner Header & Navigation Component
 function Header({ cartCount, currentUser, handleLogout, setIsAuthOpen }) {

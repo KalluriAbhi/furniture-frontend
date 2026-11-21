@@ -63,7 +63,7 @@ export default function CheckoutDelivery({ cartItems = [], onClearCart, currentU
 
     try {
       const token = localStorage.getItem('studio_token');
-      const res = await axios.post('http://process.env.REACT_APP_API_URL/api/orders', payload, {
+      const res = await axios.post('`${API_BASE_URL}/api/orders`', payload, {
         headers: token ? { Authorization: `Bearer ${token}` } : {}
       });
 

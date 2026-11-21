@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+import { API_BASE_URL } from './config';
+
 const CATEGORIES = ['All', 'Handlooms', 'Woodcraft', 'Home Accents'];
 
 export default function ProductList({ onAddToCart }) {
@@ -18,7 +20,7 @@ export default function ProductList({ onAddToCart }) {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await axios.get('http://process.env.REACT_APP_API_URL/api/products');
+     const res = await axios.get(`${API_BASE_URL}/api/products`);
         const data = Array.isArray(res.data) ? res.data : (res.data.products || []);
         setProducts(data);
       } catch (err) {
