@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { API_BASE_URL } from './config';
 
 export default function CheckoutDelivery({ cartItems = [], onClearCart, currentUser }) {
   const navigate = useNavigate();
@@ -62,8 +63,8 @@ export default function CheckoutDelivery({ cartItems = [], onClearCart, currentU
     };
 
     try {
-      const token = localStorage.getItem('studio_token');
-      const res = await axios.post('`${API_BASE_URL}/api/orders`', payload, {
+    const token = localStorage.getItem('studio_token');
+      const res = await axios.post(`${API_BASE_URL}/api/orders`, payload, {
         headers: token ? { Authorization: `Bearer ${token}` } : {}
       });
 
